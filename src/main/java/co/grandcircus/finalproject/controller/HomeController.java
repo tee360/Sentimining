@@ -1,4 +1,4 @@
-package co.grandcircus.finalproject;
+package co.grandcircus.finalproject.controller;
 
 import java.text.DateFormat;
 import java.util.Date;
