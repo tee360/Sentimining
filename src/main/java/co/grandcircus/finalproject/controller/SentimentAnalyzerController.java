@@ -36,7 +36,7 @@ public class SentimentAnalyzerController {
 	@RequestMapping("/stringAnalyzer") 	// will work for GET or POST
 	public String sentimentAnalyzer(Model model, @RequestParam(value="stringToAnalyze", required=false)String stringToAnalyze) {
 		// add the 'sentimentAnalyzer' variable to the JSP
-		model.addAttribute("stringAnalyzer", stringAnalyzer.getAnalysisOfSentiment(stringToAnalyze));
+		model.addAttribute("SentimentAnalyzer", stringAnalyzer.getAnalysisOfSentiment(stringToAnalyze));
 
 		logger.info("/stringAnalyzer -> stringAnalyzer.jsp");
 

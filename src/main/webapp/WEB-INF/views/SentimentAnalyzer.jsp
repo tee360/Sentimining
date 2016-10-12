@@ -4,9 +4,15 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+<@ include file="parts/head.jsp"%>
 <title>Sentiment Analyzer</title>
 </head>
 <body>
-
+	<div class="nav">
+		<a href="<c:url value="/"/>">Home</a>
+	</div>
+	<h1>Sentiment Analyzer</h1>
+	<p>
+		<c:out value="${SentimentAnalyzer }">
 </body>
 </html>
