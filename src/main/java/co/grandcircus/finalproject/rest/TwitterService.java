@@ -39,8 +39,8 @@ public class TwitterService {
       // System.out.println("test");
        for (Status st : status) {
     	   
-    	   //System.out.println(st.getText());
-    	   statusList.contains(st);
+    	   System.out.println(st.getText());
+    	   statusList.add(st);
        }
      
        	   

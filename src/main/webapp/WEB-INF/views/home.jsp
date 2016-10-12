@@ -1,14 +1,21 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <%@ page session="false" %>
+<%--
+	On this page the user can choose to view movies or categories.
+	
+	Model: none
+ --%>
 <html>
 <head>
+<%@ include file="parts/head.jsp" %>
 	<title>Home</title>
 </head>
 <body>
 <h1>
-	Hello world!  
+	Reflect  
 </h1>
 
 <P>  The time on the server is ${serverTime}. </P>
+<a href="<c:url value="/twitter"/>">Twitter</a>
 </body>
 </html>
