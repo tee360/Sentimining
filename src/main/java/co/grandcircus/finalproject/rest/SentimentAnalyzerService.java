@@ -14,7 +14,7 @@ public class SentimentAnalyzerService {
 	private final static String STRING_RATING = "positive";
 	private final static String HAPPY_STRING = "I love this place";
 
-	public SentimentAnalyzer getMovieRatingForGhostbusters() {
+	public SentimentAnalyzer getSentimentAnalysisForHappyString() {
 		return getAnalysisOfSentiment(HAPPY_STRING);
 	}
 	

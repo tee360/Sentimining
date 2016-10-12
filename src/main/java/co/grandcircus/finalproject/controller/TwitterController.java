@@ -1,4 +1,5 @@
 package co.grandcircus.finalproject.controller;
+
 import java.util.Locale;
 
 import org.slf4j.Logger;
@@ -9,8 +10,6 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import co.grandcircus.finalproject.rest.TwitterService;
-
-
 
 @Controller
 public class TwitterController {
@@ -32,11 +31,7 @@ public class TwitterController {
 		// holidayservice.getCurrentHolidays().toString());
 
 		// select to use the weather.jsp view
-		return "holiday";
+		return "twitter";
 	}
-
-
-
-
 
 }
