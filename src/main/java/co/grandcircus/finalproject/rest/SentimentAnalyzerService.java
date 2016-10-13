@@ -4,6 +4,7 @@ import java.io.BufferedReader;
 import java.io.IOException;
 import java.util.ArrayList;
 
+import org.json.JSONObject;
 import org.springframework.stereotype.Service;
 
 import com.google.gson.JsonArray;
@@ -16,7 +17,7 @@ import com.mashape.unirest.http.Unirest;
 import com.mashape.unirest.http.exceptions.UnirestException;
 
 import co.grandcircus.finalproject.model.SentimentAnalyzer;
-import twitter4j.JSONObject;
+
 @Service
 public class SentimentAnalyzerService {
 	
@@ -42,13 +43,13 @@ public class SentimentAnalyzerService {
 			e.printStackTrace();
 		}
 		
-		org.json.JSONObject jObject = jsonResponse.getBody().getObject();
+		JSONObject jObject = jsonResponse.getBody().getObject();
 		
 		System.out.println(jObject);
 		
 		SentimentAnalyzer stringAnalyzer = new SentimentAnalyzer();
 		stringAnalyzer.setType(jObject.get("type").toString());
-		//stringAnalyzer.setScore(((JsonArray) jObject.get("score")).getAsDouble());
+		stringAnalyzer.setScore((jObject.getDouble("score")));
 		
 		return stringAnalyzer;
 		
