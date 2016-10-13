@@ -15,8 +15,8 @@
 	<P>The time on the server is ${serverTime}.</P>
 
 
-	<a href="<c:url value="/Reflect/twitter"/>">Twitter</a> 
-	<form action="/Reflect/twitter">
+	
+	<form action="<c:url value="/Reflect/twitter"/>">
 		<input type="text" name="user" /> <input type="submit"
 			class="buttonSearch" />
 	</form>
