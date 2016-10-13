@@ -29,10 +29,11 @@ public class SentimentAnalyzerService {
 	public HttpResponse<JsonNode> getAnalysisOfSentiment(String tweet) {
 		HttpResponse<JsonNode> jsonResponse = null;
 		try {
-			jsonResponse = Unirest.get("https://twinword-sentiment-analysis.p.mashape.com/analyze/?text=great+value+in+its+price+range!")
+			HttpResponse<JsonNode> response = Unirest.post("https://twinword-sentiment-analysis.p.mashape.com/analyze/")
 					.header("X-Mashape-Key", "vqKLeNUFrDmshfUd60DopAwITbrJp19qzOyjsnAURqfBjeFQ9w")
+					.header("Content-Type", "application/x-www-form-urlencoded")
 					.header("Accept", "application/json")
-					.routeParam("text", tweet)
+					.field("text", tweet)
 					.asJson();
 		} catch (UnirestException e) {
 			// TODO Auto-generated catch block

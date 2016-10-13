@@ -33,15 +33,15 @@ public class SentimentAnalyzerController {
 	/**
 	 * Retrieves Sentiment Analysis
 	 */
-	@RequestMapping("/stringAnalyzer") 	// will work for GET or POST
+	@RequestMapping("/SentimentAnalyzer") 	// will work for GET or POST
 	public String sentimentAnalyzer(Model model, @RequestParam(value="stringToAnalyze", required=false)String stringToAnalyze) {
 		// add the 'sentimentAnalyzer' variable to the JSP
 		model.addAttribute("SentimentAnalyzer", stringAnalyzer.getAnalysisOfSentiment("love"));
 
-		logger.info("/stringAnalyzer -> stringAnalyzer.jsp");
+		logger.info("/SentimentAnalyzer -> SentimentAnalyzer.jsp");
 
 		// select to use the movieinfo.jsp view
-		return "stringAnalyzer";
+		return "SentimentAnalyzer";
 	}
 	
 }
