@@ -16,7 +16,7 @@ public class SentimentAnalyzer {
 	/**
 	 * Strategic selection of words to analyze from the string.
 	 */
-	private String word;
+	//private String word;
 	
 	public String getType() {
 		return type;
@@ -30,12 +30,12 @@ public class SentimentAnalyzer {
 	public void setScore(double score) {
 		this.score = score;
 	}
-	public String getWord() {
-		return word;
-	}
-	public void setWord(String word) {
-		this.word = word;
-	}
+//	public String getWord() {
+//		return word;
+//	}
+//	public void setWord(String word) {
+//		this.word = word;
+//	}
 		
 
 }

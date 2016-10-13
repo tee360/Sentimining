@@ -16,9 +16,12 @@ import java.util.List;
 
 @Service
 public class TwitterService {
+
 	private String user;
 
+
 	public List<Twitter> getCurrentTweetsAt() {
+
 		return getCurrentTweets(user);
 	}
 
@@ -68,6 +71,5 @@ public class TwitterService {
 		return statusList;
 	}
 	
-
 
 }
