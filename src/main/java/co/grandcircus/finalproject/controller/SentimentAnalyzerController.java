@@ -26,22 +26,22 @@ public class SentimentAnalyzerController {
 	private static final Logger logger = LoggerFactory.getLogger(SentimentAnalyzerController.class);
 
 	@Autowired
-	private SentimentAnalyzerService stringAnalyzer;
+	private SentimentAnalyzerService sentimentAnalyzer;
 //	@Autowired
 //	private MovieDao movieDao;
 
 	/**
 	 * Retrieves Sentiment Analysis
 	 */
-	@RequestMapping("/stringAnalyzer") 	// will work for GET or POST
-	public String sentimentAnalyzer(Model model, @RequestParam(value="stringToAnalyze", required=false)String stringToAnalyze) {
+	@RequestMapping("/SentimentAnalyzer") 	// will work for GET or POST
+	public String sentimentAnalyzer(Model model, @RequestParam(value="type", required=false)String stringToAnalyze) {
 		// add the 'sentimentAnalyzer' variable to the JSP
-		model.addAttribute("SentimentAnalyzer", stringAnalyzer.getAnalysisOfSentiment("love"));
+		model.addAttribute("SentimentAnalyzer", sentimentAnalyzer.getAnalysisOfSentiment(stringToAnalyze));
 
-		logger.info("/stringAnalyzer -> stringAnalyzer.jsp");
+		logger.info("/SentimentAnalyzer -> SentimentAnalyzer.jsp");
 
 		// select to use the movieinfo.jsp view
-		return "stringAnalyzer";
+		return "SentimentAnalyzer";
 	}
 	
 }
