@@ -26,7 +26,7 @@ public class SentimentAnalyzerController {
 	private static final Logger logger = LoggerFactory.getLogger(SentimentAnalyzerController.class);
 
 	@Autowired
-	private SentimentAnalyzerService stringAnalyzer;
+	private SentimentAnalyzerService sentimentAnalyzer;
 //	@Autowired
 //	private MovieDao movieDao;
 
@@ -34,9 +34,9 @@ public class SentimentAnalyzerController {
 	 * Retrieves Sentiment Analysis
 	 */
 	@RequestMapping("/SentimentAnalyzer") 	// will work for GET or POST
-	public String sentimentAnalyzer(Model model, @RequestParam(value="stringToAnalyze", required=false)String stringToAnalyze) {
+	public String sentimentAnalyzer(Model model, @RequestParam(value="type", required=false)String stringToAnalyze) {
 		// add the 'sentimentAnalyzer' variable to the JSP
-		model.addAttribute("SentimentAnalyzer", stringAnalyzer.getAnalysisOfSentiment("love"));
+		model.addAttribute("SentimentAnalyzer", sentimentAnalyzer.getAnalysisOfSentiment(stringToAnalyze));
 
 		logger.info("/SentimentAnalyzer -> SentimentAnalyzer.jsp");
 
