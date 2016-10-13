@@ -1,5 +1,5 @@
-<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
-<%@ page session="false" %>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+<%@ page session="false"%>
 <%--
 	On this page the user can choose to view movies or categories.
 	
@@ -7,15 +7,21 @@
  --%>
 <html>
 <head>
-<%@ include file="parts/head.jsp" %>
-	<title>Home</title>
+<%@ include file="parts/head.jsp"%>
+<title>Home</title>
 </head>
 <body>
-<h1>
-	Reflect  
-</h1>
+	<h1>Reflect</h1>
+	<P>The time on the server is ${serverTime}.</P>
 
-<P>  The time on the server is ${serverTime}. </P>
-<a href="<c:url value="/twitter"/>">Twitter</a>
+
+	<a href="<c:url value="/Reflect/twitter"/>">Twitter</a> 
+	<form action="/Reflect/twitter">
+		<input type="text" name="user" /> <input type="submit"
+			class="buttonSearch" />
+	</form>
+
 </body>
+
+
 </html>

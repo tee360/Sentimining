@@ -8,6 +8,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import co.grandcircus.finalproject.rest.TwitterService;
 
@@ -22,9 +23,9 @@ public class TwitterController {
 	 * Simply selects the home view to render by returning its name.
 	 */
 	@RequestMapping("/twitter")
-	public String home(Locale locale, Model model) {
+	public String home( Model model,@RequestParam("user") final String user) {
 		// add the holiday variable to the JSP
-		model.addAttribute("twitterlist", twitterservice.getCurrentTweetsAt());
+		model.addAttribute("twitter", twitterservice.getCurrentTweets(user));
 
 		logger.info("/twitter -> twitter.jsp");
 		// logger.debug("holidayservice output ->" +

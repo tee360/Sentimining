@@ -2,7 +2,7 @@
 <%@ page session="false"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <%--
-	On this page we show the current weather.
+	On this page we show the current tweets.
 	
 	Model:
 	- Weather weather
@@ -17,10 +17,25 @@
 	</div>
 	<h1>Reflect</h1>
 	<p>
-		<label>Current Tweets: </label>
-		<c:out value="${twitterlist }" />
-		
-	</p>
+<table class="table table-striped" border="1">
+		<thead>
+			<tr>
+				<th>ID</th>
+				<th>Text</th>
+			
+			</tr>
+		</thead>
+		<tbody>
+	 	<c:forEach var="twitter" items="${twitter}">
+				<tr>
+					<td><c:out value="${ twitter.id}" /></td>
+					<td><c:out value="${ twitter.text}" /></td>
+					
+
+				</tr>
+				</c:forEach>
+		</tbody>
+</table>
 
 </body>
 </html>
