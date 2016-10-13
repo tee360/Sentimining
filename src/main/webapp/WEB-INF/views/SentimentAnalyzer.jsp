@@ -14,5 +14,7 @@
 	<h1>Sentiment Analyzer</h1>
 	<p>
 		<c:out value="${SentimentAnalyzer }">
+		</c:out>
+	</p>	
 </body>
 </html>

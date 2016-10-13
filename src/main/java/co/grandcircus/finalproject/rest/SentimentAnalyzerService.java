@@ -25,11 +25,28 @@ public class SentimentAnalyzerService {
 		return getAnalysisOfSentiment(HAPPY_STRING);
 	}
 	
-	public SentimentAnalyzer getAnalysisOfSentiment(String title) {
-		HttpResponse<JsonNode> response = Unirest.get("https://twinword-sentiment-analysis.p.mashape.com/analyze/?text=great+value+in+its+price+range!")
+	public SentimentAnalyzer getAnalysisOfSentiment(String tweet) {
+		HttpResponse<JsonNode> jsonResponse = Unirest.get("https://twinword-sentiment-analysis.p.mashape.com/analyze/?text=great+value+in+its+price+range!")
 				.header("X-Mashape-Key", "vqKLeNUFrDmshfUd60DopAwITbrJp19qzOyjsnAURqfBjeFQ9w")
 				.header("Accept", "application/json")
+				.routeParam("text", tweet)
 				.asJson();
+		
+//		try (BufferedReader reader = HttpResponse.doGet) { // try with resources will auto close the reader
+//			if (reader == null) {
+//				throw new RuntimeException("Not found: " + response);
+//			}
+//		
+//		// parse the HTTP response body to JSON
+//		JsonElement root = new JsonParser().parse(reader);
+//		 
+//		JsonObject jObject = root.getAsJsonObject();
+//		
+//		SentimentAnalyzer stringAnalyzer = new SentimentAnalyzer();
+//		stringAnalyzer.setType(jObject.get("type").getAsString());
+//		stringAnalyzer.setScore(jObject.get("score").getAsDouble());
+		
+		return stringAnalyzer;
 //		String url = "https://twinword-sentiment-analysis.p.mashape.com/analyze/";
 //		// Use HTTP GET with the above URL
 //		try (BufferedReader reader = HttpHelper.doGet(url)) { // try with resources will auto close the reader
