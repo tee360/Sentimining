@@ -11,6 +11,12 @@
 <head>
 <%@ include file="parts/head.jsp"%>
 </head>
+<style>
+div.container {
+    width: 100%;
+    border: 1px solid gray;
+}
+</style>
 <body>
 	<div class="nav">
 		<a href="<c:url value="/"/>">Home</a>
@@ -26,6 +32,10 @@
 	</p>
 		<p>Ratings: <c:out value="${ SentimentAnalyzer.ratings}" />  out of 5
 	</p>
+	<p>
+		<h1>Overview</h1>
+	</p>
+	
 <table class="table table-striped" border="1">
 		<thead>
 			<tr>
