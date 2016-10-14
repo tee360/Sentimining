@@ -14,12 +14,14 @@ import co.grandcircus.finalproject.model.Twitter;
 
 @Repository
 @Primary
+
 public class Twitterdaojdbc {
 	
 	
 	
 	
  
+
 	
 
 	
