@@ -17,30 +17,27 @@ import co.grandcircus.finalproject.model.Twitter;
 @Service
 public class SentimentAnalyzerService {
 
-	
-	
-	private final static String STRING_RATING = "positive";
-	private final static String HAPPY_STRING = "I love this place";
+	SentimentAnalyzer stringAnalyzer = new SentimentAnalyzer();
 
-	public SentimentAnalyzer getSentimentAnalysisForHappyString() {
-		return getAnalysisOfSentiment(HAPPY_STRING);
-	}
+//	public SentimentAnalyzer getSentimentAnalysisForHappyString() {
+//		return getAnalysisOfSentiment(HAPPY_STRING);
+//	}
 /*
  * This method is to get sentimentanalysis for multiple tweets and return average score and type
  * 	
  */
 	public SentimentAnalyzer getAnalysisOfSentiment(List<Twitter> tweets) {
-		SentimentAnalyzer stringAnalyzer = new SentimentAnalyzer();
+		
 		int numberOfTweets = tweets.size();
 		double score = 0;
 		for(Twitter tweet:tweets){
-			JSONObject jsonObject=getAnalysisOfSentimentJSONObject(tweet.getText());
+			JSONObject jsonObject = getAnalysisOfSentimentJSONObject(tweet.getText());
 			score += jsonObject.getDouble("score");
 		}
 		double averageScore = score/numberOfTweets;
-		if(averageScore<0){
+		if(averageScore < 0){
 			stringAnalyzer.setType("negative");
-		}else if(averageScore>0){
+		}else if(averageScore > 0){
 			stringAnalyzer.setType("positive");
 		}else{
 			stringAnalyzer.setType("neutral");
@@ -49,21 +46,41 @@ public class SentimentAnalyzerService {
 	
 		stringAnalyzer.setScore(averageScore);
 		
+		stringAnalyzer.setSummary(getSummary2(stringAnalyzer.getRatings()));
+		
 		return stringAnalyzer;
 	}
 	
 	public int getRatings(double averageScore){
-		if(averageScore>=.5){
+		
+		if(averageScore >= .5){
 			return 5;
-		}else if(averageScore>0.05 && averageScore<.5){
+		}else if(averageScore > 0.05 && averageScore < .5){
 			return 4;
-		}else if(averageScore>=-0.05 && averageScore<=0.05){
+		}else if(averageScore >= -0.05 && averageScore <= 0.05){
 			return 3;
-		}else if(averageScore<-0.05 && averageScore>-.5){
+		}else if(averageScore < -0.05 && averageScore >- .5){
 			return 2;
 		}
 		return 1;
 		
+	}
+	
+	public String getSummary2(int ratings) {
+		switch(ratings) {
+		case 1: 
+			return "After analyzing the tweets, it was determined that this source has a highly unfavorable view among users.";
+		case 2:
+			return "After analyzing the tweets, it was determined that this source has an unfavorable view among users.";
+		case 3:
+			return "After analyzing the tweets, it was determined that this source has a favorable view among users.";
+		case 4:
+			return "After analyzing the tweets, it was determined that this source has a highly favorable view among users.";
+		case 5:
+			return "After analyzing the tweets, it was determined that this source has an excellent view among users.";
+		default:
+			return null;
+		}
 	}
 	/*
 	 * To get Sentiment analysis as jsonobject for single tweet so this can be used in multiple method
@@ -88,7 +105,7 @@ public class SentimentAnalyzerService {
 	}
 	/*
 	 * This method is to get sentiment analysis for single tweet
-	 * 
+	 * Not really being used anymore
 	 * 
 	 */
 	public SentimentAnalyzer getAnalysisOfSentiment(String tweet) {
@@ -105,42 +122,8 @@ public class SentimentAnalyzerService {
 		
 		return stringAnalyzer;
 		
-//		// parse the HTTP response body to JSON
-		//JsonElement root = new JsonObject();
-		 
-		
-//		String url = "https://twinword-sentiment-analysis.p.mashape.com/analyze/";
-//		// Use HTTP GET with the above URL
-//		try (BufferedReader reader = HttpHelper.doGet(url)) { // try with resources will auto close the reader
-//			if (reader == null) {
-//				throw new RuntimeException("Not found: " + url);
-//			}
-//			
-//			// parse the HTTP response body to JSON
-//			JsonElement root = new JsonParser().parse(reader);
-//			// 
-//			JsonObject jObject = root.getAsJsonObject();
-//			//JsonArray keywords = root.getAsJsonObject().get("keywords").getAsJsonArray();
-//			
-//			//ArrayList<SentimentAnalyzer> keywordList = new ArrayList<SentimentAnalyzer>();
-//			SentimentAnalyzer stringAnalyzer = new SentimentAnalyzer();
-//			
-////			for(int i = 0; i < keywords.size(); i++) {
-////				stringAnalyzer.setWord(keywords.get(i).getAsJsonObject().get("word").getAsString());
-////			}
-//
-//			// 
-//			stringAnalyzer.setType(jObject.get("type").getAsString());
-//			stringAnalyzer.setScore(jObject.get("score").getAsDouble());
-//			// 
-//		//	stringAnalyzer.setWord(jObject.get("word").getAsString());
-//			// 
-//			
-//
-//			return stringAnalyzer;
-//		} catch (IOException ex) {
-//			throw new RuntimeException("Error reading from URL: " + url, ex);
-//		}
+
+
 	}
 	
 }
