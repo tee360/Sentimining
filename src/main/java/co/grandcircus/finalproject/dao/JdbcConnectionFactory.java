@@ -40,4 +40,8 @@ public class JdbcConnectionFactory {
 		}
 	}
 
+<<<<<<< HEAD
 }
+=======
+}
+>>>>>>> f86dfb1d8411d1c18cb47f4d42552c738810c366

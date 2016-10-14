@@ -22,8 +22,8 @@ public class TwitterController {
 	/**
 	 * Simply selects the home view to render by returning its name.
 	 */
-	@RequestMapping("/twitter")
-	public String home( Model model,@RequestParam("user") final String user) {
+	@RequestMapping("/Reflect/twitter")
+	public String home(Model model, @RequestParam("user") final String user) {
 		// add the holiday variable to the JSP
 		model.addAttribute("twitter", twitterservice.getCurrentTweets(user));
 
