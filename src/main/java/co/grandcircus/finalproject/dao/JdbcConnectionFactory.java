@@ -27,6 +27,7 @@ public class JdbcConnectionFactory {
 	
 	//@Value("${db.password}")
 	private String password="password";
+
 	
 	public Connection getConnection() {
 		try {
@@ -39,9 +40,6 @@ public class JdbcConnectionFactory {
 		    throw new RuntimeException("Connection Failure", ex);
 		}
 	}
+}
 
-<<<<<<< HEAD
-}
-=======
-}
->>>>>>> f86dfb1d8411d1c18cb47f4d42552c738810c366
+
