@@ -20,8 +20,14 @@ public class SentimentAnalyzer {
 	/**
 	 * Strategic selection of words to analyze from the string.
 	 */
-	//private String word;
+	private String summary;
 	
+	public String getSummary() {
+		return summary;
+	}
+	public void setSummary(String summary) {
+		this.summary = summary;
+	}
 	public String getType() {
 		return type;
 	}

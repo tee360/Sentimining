@@ -17,20 +17,17 @@ import co.grandcircus.finalproject.model.Twitter;
 @Service
 public class SentimentAnalyzerService {
 
-	
-	
-	private final static String STRING_RATING = "positive";
-	private final static String HAPPY_STRING = "I love this place";
+	SentimentAnalyzer stringAnalyzer = new SentimentAnalyzer();
 
-	public SentimentAnalyzer getSentimentAnalysisForHappyString() {
-		return getAnalysisOfSentiment(HAPPY_STRING);
-	}
+//	public SentimentAnalyzer getSentimentAnalysisForHappyString() {
+//		return getAnalysisOfSentiment(HAPPY_STRING);
+//	}
 /*
  * This method is to get sentimentanalysis for multiple tweets and return average score and type
  * 	
  */
 	public SentimentAnalyzer getAnalysisOfSentiment(List<Twitter> tweets) {
-		SentimentAnalyzer stringAnalyzer = new SentimentAnalyzer();
+		
 		int numberOfTweets = tweets.size();
 		double score = 0;
 		for(Twitter tweet:tweets){
@@ -49,6 +46,8 @@ public class SentimentAnalyzerService {
 	
 		stringAnalyzer.setScore(averageScore);
 		
+		stringAnalyzer.setSummary(getSummary2(stringAnalyzer.getRatings()));
+		
 		return stringAnalyzer;
 	}
 	
@@ -65,6 +64,23 @@ public class SentimentAnalyzerService {
 		}
 		return 1;
 		
+	}
+	
+	public String getSummary2(int ratings) {
+		switch(ratings) {
+		case 1: 
+			return "After analyzing the tweets, it was determined that this source has a highly unfavorable view among users.";
+		case 2:
+			return "After analyzing the tweets, it was determined that this source has an unfavorable view among users.";
+		case 3:
+			return "After analyzing the tweets, it was determined that this source has a favorable view among users.";
+		case 4:
+			return "After analyzing the tweets, it was determined that this source has a highly favorable view among users.";
+		case 5:
+			return "After analyzing the tweets, it was determined that this source has an excellent view among users.";
+		default:
+			return null;
+		}
 	}
 	/*
 	 * To get Sentiment analysis as jsonobject for single tweet so this can be used in multiple method
