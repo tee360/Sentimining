@@ -14,25 +14,26 @@ import co.grandcircus.finalproject.model.Twitter;
 
 @Repository
 @Primary
-public class Twitterdaojdbc {
+public class TwitterDaoJdbc implements TwitterDao{
+	
 	@Autowired
 	JdbcConnectionFactory connectionFactory;
 	
+	@Override
 	public String addTweets(Twitter tweet) {
+		long tweetID = tweet.getId();
+		String text = tweet.getText();
 		String sql = "INSERT INTO user (id, text) VALUES (?, ?)";
 		try (Connection connection = connectionFactory.getConnection();
 				PreparedStatement statement = connection.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS)) {
 
-			statement.setLong(1,tweet.getId());
-			statement.setString(2,tweet.getText());
+			statement.setLong(1, tweet.getId());
+			statement.setString(2, tweet.getText());
 			
 			int affectedRows = statement.executeUpdate();
 			if (affectedRows == 0) {
 				throw new SQLException("Creating users failed, no rows affected.");
-			}
-
-			
-				
+			}				
 
 			return tweet.getText();
 		} catch (SQLException ex) {
