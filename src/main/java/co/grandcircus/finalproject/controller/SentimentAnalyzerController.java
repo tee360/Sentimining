@@ -14,6 +14,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 
+import co.grandcircus.finalproject.model.Twitter;
 import co.grandcircus.finalproject.rest.SentimentAnalyzerService;
 
 
@@ -35,8 +36,10 @@ public class SentimentAnalyzerController {
 	 */
 	@RequestMapping("/SentimentAnalyzer") 	// will work for GET or POST
 	public String sentimentAnalyzer(Model model, @RequestParam(value="type", required=false)String stringToAnalyze) {
+		
+		Twitter tweet = new Twitter();
 		// add the 'sentimentAnalyzer' variable to the JSP
-		model.addAttribute("SentimentAnalyzer", sentimentAnalyzer.getAnalysisOfSentiment("love"));
+		model.addAttribute("SentimentAnalyzer", sentimentAnalyzer.getAnalysisOfSentiment(tweet.getText()));
 
 		logger.info("/SentimentAnalyzer -> SentimentAnalyzer.jsp");
 
