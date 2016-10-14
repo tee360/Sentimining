@@ -11,7 +11,6 @@ import com.mashape.unirest.http.JsonNode;
 import com.mashape.unirest.http.Unirest;
 import com.mashape.unirest.http.exceptions.UnirestException;
 
-import co.grandcircus.finalproject.dao.Twitterdaojdbc;
 import co.grandcircus.finalproject.model.SentimentAnalyzer;
 import co.grandcircus.finalproject.model.Twitter;
 

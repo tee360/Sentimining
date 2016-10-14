@@ -15,7 +15,6 @@ import co.grandcircus.finalproject.model.SentimentAnalyzer;
 import co.grandcircus.finalproject.model.Twitter;
 import co.grandcircus.finalproject.rest.SentimentAnalyzerService;
 import co.grandcircus.finalproject.rest.TwitterService;
-import co.grandcircus.finalproject.dao.Twitterdaojdbc;
 
 @Controller
 public class TwitterController {
