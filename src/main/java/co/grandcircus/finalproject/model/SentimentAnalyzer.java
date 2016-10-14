@@ -14,6 +14,10 @@ public class SentimentAnalyzer {
 	 */
 	private double score;
 	/**
+	 * Ratings based on analysis.
+	 */
+	private int ratings;
+	/**
 	 * Strategic selection of words to analyze from the string.
 	 */
 	//private String word;
@@ -36,6 +40,12 @@ public class SentimentAnalyzer {
 //	public void setWord(String word) {
 //		this.word = word;
 //	}
+	public int getRatings() {
+		return ratings;
+	}
+	public void setRatings(int ratings) {
+		this.ratings = ratings;
+	}
 		
 
 }

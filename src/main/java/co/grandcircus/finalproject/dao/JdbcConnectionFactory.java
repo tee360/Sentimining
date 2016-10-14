@@ -19,14 +19,14 @@ public class JdbcConnectionFactory {
 	
 	private String driverClass = "com.mysql.jdbc.Driver";
 	
-	@Value("${db.url}")
-	private String dbUrl;
+	//@Value("${db.url}")
+	private String dbUrl="jdbc:mysql://localhost:3306/reflect";
 	
-	@Value("${db.username}")
-	private String username;
+	//@Value("${db.username}")
+	private String username="root";
 	
-	@Value("${db.password}")
-	private String password;
+	//@Value("${db.password}")
+	private String password="password";
 	
 	public Connection getConnection() {
 		try {

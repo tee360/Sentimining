@@ -3,5 +3,5 @@
 <%--
 	This code is included inside the <head> of every page
  --%>
-	<title>Movies!</title>
+	<title>Reflect</title>
 	<link href="<c:url value="/resources/main.css"/>" rel="stylesheet"/>

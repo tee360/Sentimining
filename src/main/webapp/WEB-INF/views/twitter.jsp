@@ -5,7 +5,7 @@
 	On this page we show the current tweets.
 	
 	Model:
-	- Weather weather
+	- Twitter twitter
  --%>
 <html>
 <head>
@@ -17,18 +17,27 @@
 	</div>
 	<h1>Reflect</h1>
 	<p>
+		<h1>Sentiment Analyzer</h1>
+	<p>
+		<c:out value="${ SentimentAnalyzer.type}" />
+	</p>
+	<p>
+		<c:out value="${ SentimentAnalyzer.score}" />
+	</p>
+		<p>Ratings: <c:out value="${ SentimentAnalyzer.ratings}" />  out of 5
+	</p>
 <table class="table table-striped" border="1">
 		<thead>
 			<tr>
-				<th>ID</th>
-				<th>Text</th>
+			
+				<th>Tweets</th>
 			
 			</tr>
 		</thead>
 		<tbody>
 	 	<c:forEach var="twitter" items="${twitter}">
 				<tr>
-					<td><c:out value="${ twitter.id}" /></td>
+					
 					<td><c:out value="${ twitter.text}" /></td>
 					
 
