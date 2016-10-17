@@ -1,7 +1,9 @@
 package co.grandcircus.finalproject.model;
 
+import java.util.ArrayList;
+
 /**
- * Responsibility: Provide additional movie info fromNetflix API
+ * Responsibility: Provide sentimentanalyzer data given by sentimentanalyzerservice
  */
 public class SentimentAnalyzer {
 
@@ -12,17 +14,21 @@ public class SentimentAnalyzer {
 	/**
 	 * Average score analysis of entire string.
 	 */
-	private double score;
+	private int score;
 	/**
 	 * Ratings based on analysis.
 	 */
 	private int ratings;
-	/**
-	 * Strategic selection of words to analyze from the string.
-	 */
-	private String summary;
 	
-	public String getSummary() {
+	private String summary;
+	private Double averageScore;
+	
+	private Double scoreValue;
+	private String keyword;
+	
+	
+	
+    public String getSummary() {
 		return summary;
 	}
 	public void setSummary(String summary) {
@@ -34,24 +40,39 @@ public class SentimentAnalyzer {
 	public void setType(String type) {
 		this.type = type;
 	}
-	public double getScore() {
+	public int getScore() {
 		return score;
 	}
-	public void setScore(double score) {
+	public void setScore(int score) {
 		this.score = score;
 	}
-//	public String getWord() {
-//		return word;
-//	}
-//	public void setWord(String word) {
-//		this.word = word;
-//	}
+
 	public int getRatings() {
 		return ratings;
 	}
 	public void setRatings(int ratings) {
 		this.ratings = ratings;
 	}
-		
+
+   public Double getAverageScore() {
+		return averageScore;
+	}
+	public void setAverageScore(Double averageScore) {
+		this.averageScore = averageScore;
+	}
+	public Double getScoreValue() {
+		return scoreValue;
+	}
+	public void setScoreValue(Double scoreValue) {
+		this.scoreValue = scoreValue;
+	}
+	public String getKeyword() {
+		return keyword;
+	}
+	public void setKeyword(String keyword) {
+		this.keyword = keyword;
+	}
+	
+	
 
 }

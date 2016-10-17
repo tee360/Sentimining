@@ -1,10 +1,12 @@
 package co.grandcircus.finalproject.model;
-
+/*   Twitter model is used to get the messages from the twitter
+ * 
+ */
 public class Twitter {
 	private String user;
 	private long id;
 	private String text;
-	private String url;
+	
 	
 
 	public long getId() {
@@ -23,13 +25,7 @@ public class Twitter {
 		this.text = text;
 	}
 
-	public String getUrl() {
-		return url;
-	}
-
-	public void setUrl(String url) {
-		this.url = url;
-	}
+	
 
 	public String getUser() {
 		return user;
