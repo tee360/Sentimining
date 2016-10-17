@@ -26,21 +26,9 @@ public class SentimentAnalyzer {
 	private Double scoreValue;
 	private String keyword;
 	
-<<<<<<< HEAD
-	public int runningAvg;
-	
-	public int getRunningAvg() {
-		return runningAvg;
-	}
-	public void setRunningAvg(int runningAvg) {
-		this.runningAvg = runningAvg;
-	}
-	public String getSummary() {
-=======
 	
 	
     public String getSummary() {
->>>>>>> 591c9e43b29267c0d94dacc0c023cd31ae9418d3
 		return summary;
 	}
 	public void setSummary(String summary) {
