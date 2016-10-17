@@ -1,9 +1,22 @@
 package co.grandcircus.finalproject.dao;
 
-import java.util.List;
+import java.sql.SQLException;
+import java.util.ArrayList;
 
-public interface SearchDataDao {
+import co.grandcircus.finalproject.model.SentimentAnalyzer;
+
+public interface SearchDataDao<Score> {
 
 	public String addTweets(String name, Double avg, String type);
+	
+	public Double retrieveRunningAvg(String keyword);
+	
+	public SentimentAnalyzer getMaxScore() throws SQLException;
+
+	public SentimentAnalyzer getMinScore() throws SQLException;
+	
+	
+	
+	
 
 }
