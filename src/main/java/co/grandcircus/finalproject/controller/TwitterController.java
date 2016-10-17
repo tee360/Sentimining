@@ -45,6 +45,7 @@ public class TwitterController {
 
 		SentimentAnalyzer analyzer = sentimentAnalyzer.getAnalysisOfSentiment(tweets);
 
+
 		jdbc.addTweets(user, analyzer.getScore(), analyzer.getType());
 		model.addAttribute("averageScore", jdbc.retrieveRunningAvg(user));
 

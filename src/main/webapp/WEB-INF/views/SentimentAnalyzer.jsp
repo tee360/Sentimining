@@ -18,6 +18,7 @@
 	</p>
 	<p>
 		<c:out value="${ SentimentAnalyzer.score}" />
+		<p>Running Avg. <c:out value="${ SentimentAnalyzer.runningAvg }" />
 	</p>
 </body>
 </html>

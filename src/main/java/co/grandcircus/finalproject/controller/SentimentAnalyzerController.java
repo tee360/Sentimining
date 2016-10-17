@@ -24,8 +24,7 @@ public class SentimentAnalyzerController {
 
 	@Autowired
 	private SentimentAnalyzerService sentimentAnalyzer;
-	// @Autowired
-	// private MovieDao movieDao;
+
 
 	/**
 	 * Retrieves Sentiment Analysis
@@ -37,10 +36,11 @@ public class SentimentAnalyzerController {
 		// add the 'sentimentAnalyzer' variable to the JSP
 
 		model.addAttribute("SentimentAnalyzer", sentimentAnalyzer.getAnalysisOfSentiment("lovely"));
+	
 
 		logger.info("/SentimentAnalyzer -> SentimentAnalyzer.jsp");
 
-		// select to use the movieinfo.jsp view
+		// select to use the SentimentAnalyzer.jsp view
 		return "SentimentAnalyzer";
 	}
 
