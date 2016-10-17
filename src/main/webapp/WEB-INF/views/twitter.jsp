@@ -23,11 +23,15 @@
 		<c:out value="${ SentimentAnalyzer.type}" />
 	</p>
 	<p>
+		Your score is:
 		<c:out value="${ SentimentAnalyzer.score}" />
+		<p class="tab">Scale: -100 thru +100		
 	</p>
 		<p>Ratings: <c:out value="${ SentimentAnalyzer.ratings}" />  out of 5
 		<br>
 		<p>Overview: <c:out value="${ SentimentAnalyzer.summary}" />
+		<br>
+		<p>Running Avg. <c:out value="${ SentimentAnalyzer.runningAvg }" />
 	</p>
 <table class="table table-striped" border="1">
 		<thead>

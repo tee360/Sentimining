@@ -40,10 +40,12 @@ public class TwitterController {
 		model.addAttribute("twitter", tweets.subList(0, 5));
 
 		SentimentAnalyzer analyzer = sentimentAnalyzer.getAnalysisOfSentiment(tweets);
-
-		model.addAttribute("SentimentAnalyzer", analyzer);
-		jdbc.addTweets(user, analyzer.getScore(), analyzer.getType());
-
+		model.addAttribute("sentimentAnalyzer", analyzer);
+		
+		model.addAttribute("runningAvg", jdbc.retrieveRunningAvg());
+		
+		jdbc.addTweets(user, analyzer.getScore(), analyzer.getType());		
+		
 		logger.info("/twitter -> twitter.jsp");
 
 		return "twitter";

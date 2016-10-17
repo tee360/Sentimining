@@ -23,7 +23,7 @@ public class SentimentAnalyzerService {
 //		return getAnalysisOfSentiment(HAPPY_STRING);
 //	}
 /*
- * This method is to get sentimentanalysis for multiple tweets and return average score and type
+ * This method is to get the sentiment analysis for multiple tweets and return average score and type
  * 	
  */
 	public SentimentAnalyzer getAnalysisOfSentiment(List<Twitter> tweets) {
@@ -34,6 +34,7 @@ public class SentimentAnalyzerService {
 			JSONObject jsonObject = getAnalysisOfSentimentJSONObject(tweet.getText());
 			score += jsonObject.getDouble("score");
 		}
+		
 		double averageScore = score/numberOfTweets;
 		if(averageScore < 0){
 			stringAnalyzer.setType("negative");
@@ -44,9 +45,12 @@ public class SentimentAnalyzerService {
 		}
 		stringAnalyzer.setRatings(getRatings(averageScore));
 	
-		stringAnalyzer.setScore(averageScore);
+		stringAnalyzer.setScore((int)Math.round(averageScore * 100));
 		
 		stringAnalyzer.setSummary(getSummary2(stringAnalyzer.getRatings()));
+		
+		stringAnalyzer.setRunningAvg(stringAnalyzer.getRunningAvg());
+		System.out.println("TESTING!!! HELLO!!! " + stringAnalyzer.getRunningAvg());
 		
 		return stringAnalyzer;
 	}
@@ -69,15 +73,20 @@ public class SentimentAnalyzerService {
 	public String getSummary2(int ratings) {
 		switch(ratings) {
 		case 1: 
-			return "After analyzing the tweets, it was determined that this source has a highly unfavorable view among users.";
+			return "After analyzing some of the more recent tweets, "
+					+ "it was determined that this source has a highly unfavorable view among users.";
 		case 2:
-			return "After analyzing the tweets, it was determined that this source has an unfavorable view among users.";
+			return "After analyzing some of the more recent tweets, "
+					+ "it was determined that this source has an unfavorable view among users.";
 		case 3:
-			return "After analyzing the tweets, it was determined that this source has a favorable view among users.";
+			return "After analyzing some of the more recent tweets, "
+					+ "it was determined that this source has a favorable view among users.";
 		case 4:
-			return "After analyzing the tweets, it was determined that this source has a highly favorable view among users.";
+			return "After analyzing some of the more recent tweets, "
+					+ "it was determined that this source has a highly favorable view among users.";
 		case 5:
-			return "After analyzing the tweets, it was determined that this source has an excellent view among users.";
+			return "After analyzing some of the more recent tweets, "
+					+ "it was determined that this source has an excellent view among users.";
 		default:
 			return null;
 		}
@@ -117,7 +126,7 @@ public class SentimentAnalyzerService {
 		
 		SentimentAnalyzer stringAnalyzer = new SentimentAnalyzer();
 		stringAnalyzer.setType(jObject.get("type").toString());
-		stringAnalyzer.setScore((jObject.getDouble("score")));
+		stringAnalyzer.setScore((int)(jObject.getDouble("score")));
 		stringAnalyzer.setRatings(getRatings(jObject.getDouble("score")));
 		
 		return stringAnalyzer;

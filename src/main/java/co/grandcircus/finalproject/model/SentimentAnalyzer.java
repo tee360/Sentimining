@@ -12,7 +12,7 @@ public class SentimentAnalyzer {
 	/**
 	 * Average score analysis of entire string.
 	 */
-	private double score;
+	private int score;
 	/**
 	 * Ratings based on analysis.
 	 */
@@ -22,6 +22,14 @@ public class SentimentAnalyzer {
 	 */
 	private String summary;
 	
+	public int runningAvg;
+	
+	public int getRunningAvg() {
+		return runningAvg;
+	}
+	public void setRunningAvg(int runningAvg) {
+		this.runningAvg = runningAvg;
+	}
 	public String getSummary() {
 		return summary;
 	}
@@ -34,10 +42,10 @@ public class SentimentAnalyzer {
 	public void setType(String type) {
 		this.type = type;
 	}
-	public double getScore() {
+	public int getScore() {
 		return score;
 	}
-	public void setScore(double score) {
+	public void setScore(int score) {
 		this.score = score;
 	}
 //	public String getWord() {
