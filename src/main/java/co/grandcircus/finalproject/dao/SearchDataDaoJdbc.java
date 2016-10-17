@@ -24,10 +24,11 @@ public class SearchDataDaoJdbc implements SearchDataDao {
 	@Autowired
 	JdbcConnectionFactory connectionFactory;
 
-	@Override
+	
 	public String addTweets(String name, int score, String type) {
 		String sql = "INSERT INTO data_repo (search_name,score_average,type) VALUES (?, ?,?)";
 
+		Double avg = null;
 		if (avg.isNaN()) {
 			avg = 0.0;
 		}
@@ -131,6 +132,13 @@ public class SearchDataDaoJdbc implements SearchDataDao {
 			throw new RuntimeException(ex);
 		}
 
+	}
+
+
+	@Override
+	public String addTweets(String name, Double avg, String type) {
+		// TODO Auto-generated method stub
+		return null;
 	}
 
 	
