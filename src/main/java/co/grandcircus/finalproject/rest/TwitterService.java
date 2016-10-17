@@ -55,6 +55,7 @@ public class TwitterService {
 				// getUserTimeline is responsible to return 20 tweets by default
 
 				status = twitter.getUserTimeline(user, paging);
+				status = twitter.getMentionsTimeline();
 
 				for (Status st : status) {
 
