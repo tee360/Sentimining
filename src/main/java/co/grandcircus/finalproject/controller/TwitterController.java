@@ -1,7 +1,6 @@
 package co.grandcircus.finalproject.controller;
 
 import java.util.List;
-import java.util.Locale;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -31,21 +30,32 @@ public class TwitterController {
 	private SearchDataDaoJdbc jdbc;
 
 	/**
-	 * Simply selects the home view to render by returning its name.
+	 * It retrieve the tweets and being processed by sentimentanalyzer service
+	 * and returns the model to twitter.jsp
 	 */
 	@RequestMapping("/Reflect/twitter")
 	public String home(Model model, @RequestParam("user") final String user) {
 
 		List<Twitter> tweets = twitterservice.getCurrentTweets(user);
-		model.addAttribute("twitter", tweets.subList(0, 5));
+		if (tweets != null && tweets.size() > 5) {
+			model.addAttribute("twitter", tweets.subList(0, 5));
+		} else {
+			model.addAttribute("twitter", tweets);
+		}
 
 		SentimentAnalyzer analyzer = sentimentAnalyzer.getAnalysisOfSentiment(tweets);
-		model.addAttribute("sentimentAnalyzer", analyzer);
-		
-		model.addAttribute("runningAvg", jdbc.retrieveRunningAvg());
-		
-		jdbc.addTweets(user, analyzer.getScore(), analyzer.getType());		
-		
+
+
+		jdbc.addTweets(user, analyzer.getScore(), analyzer.getType());
+		model.addAttribute("averageScore", jdbc.retrieveRunningAvg(user));
+
+		model.addAttribute("SentimentAnalyzer", analyzer);
+
+		model.addAttribute("searchKeyword", user);
+		model.addAttribute("maxScore", jdbc.getMaxScore());
+
+		model.addAttribute("minScore", jdbc.getMinScore());
+
 		logger.info("/twitter -> twitter.jsp");
 
 		return "twitter";
