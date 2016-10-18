@@ -47,8 +47,10 @@ public class TwitterService {
 
 		ConfigurationBuilder cb = getConfigBuilder();
 		List<Twitter> statusList = new ArrayList<Twitter>();
+		
 		//Create TwitterFactory using the ConfigurationBuilder
 		TwitterFactory tf = new TwitterFactory(cb.build());
+		
 		//getInstance method  gives the twitter object
 		twitter4j.Twitter twitter = tf.getInstance();
 
@@ -58,6 +60,7 @@ public class TwitterService {
 			int count_per_page = 10;
 			Paging paging = new Paging(1, count_per_page);
 			for (int i = 1; i <= number_of_pages; i++) {
+				
 				// getUserTimeline is responsible to return 20 tweets by default
 				status = twitter.getUserTimeline(user, paging);
 				status = twitter.getMentionsTimeline();
@@ -70,14 +73,11 @@ public class TwitterService {
 				}
 				paging.setPage(i + 1);
 			}
-
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
-
 		return statusList;
 	}
-
 	/*
      * 
 	 * This method is to search for the string with # or @
