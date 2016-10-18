@@ -25,7 +25,7 @@ public class SearchDataDaoJdbc implements SearchDataDao {
 	JdbcConnectionFactory connectionFactory;
 
 	@Override
-	public String addTweets(String name, int score, String type) {
+	public String addTweets(String name, Double avg, String type) {
 		String sql = "INSERT INTO data_repo (search_name,score_average,type) VALUES (?, ?,?)";
 
 		if (avg.isNaN()) {
@@ -35,7 +35,7 @@ public class SearchDataDaoJdbc implements SearchDataDao {
 				PreparedStatement statement = connection.prepareStatement(sql)) {
 
 			statement.setString(1, name);
-			statement.setDouble(2, score);
+			statement.setDouble(2, avg);
 			statement.setString(3, type);
 
 			int affectedRows = statement.executeUpdate();

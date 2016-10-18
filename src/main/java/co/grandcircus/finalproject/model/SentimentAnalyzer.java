@@ -14,7 +14,7 @@ public class SentimentAnalyzer {
 	/**
 	 * Average score analysis of entire string.
 	 */
-	private int score;
+	private double score;
 	/**
 	 * Ratings based on analysis.
 	 */
@@ -40,10 +40,10 @@ public class SentimentAnalyzer {
 	public void setType(String type) {
 		this.type = type;
 	}
-	public int getScore() {
+	public double getScore() {
 		return score;
 	}
-	public void setScore(int score) {
+	public void setScore(double score) {
 		this.score = score;
 	}
 
