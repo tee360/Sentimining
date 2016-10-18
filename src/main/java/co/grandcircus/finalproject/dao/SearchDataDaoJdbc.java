@@ -29,7 +29,7 @@ public class SearchDataDaoJdbc implements SearchDataDao {
 
 		String sql = "INSERT INTO data_repo (search_name,score_average,type) VALUES (?, ?,?)";
 
-		Double avg = null;
+		//Double avg = null;
 		if (avg.isNaN()) {
 			avg = 0.0;
 		}

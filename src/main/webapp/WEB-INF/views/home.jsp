@@ -7,20 +7,23 @@
  --%>
 <html>
 <head>
-
 <%@ include file="parts/head.jsp"%>
 <title>Home</title>
 </head>
 <body>
-	
 	<h1>Reflect</h1>
 	<P>The time on the server is ${serverTime}.</P>
- 	
+
+
 	
 	<form action="<c:url value="/Reflect/twitter"/>">
-		<input type="text" name="user" /> <input type="submit"
-			class="btn" />
-			
+		<input type="text" name="user" />
+		<select name ="searchType">
+			  <option value="#">#-HashTag</option>
+			  <option value="@">@-Tag</option>
+			  <option value="timeLine">timeLine</option>
+		</select>
+		 <input type="submit" class="buttonSearch" />
 	</form>
 
 </body>
