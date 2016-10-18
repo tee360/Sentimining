@@ -46,6 +46,8 @@ public class TwitterService {
 //				Twitter tw = new Twitter();
 //				tw.setText(st.getText());
 //				tw.setId(st.getId());
+	
+	public List<Twitter> getCurrentTweets(String user) {
 
 		ConfigurationBuilder cb = getConfigBuilder();
 		List<Twitter> statusList = new ArrayList<Twitter>();
@@ -81,6 +83,7 @@ public class TwitterService {
 	try {
 		Query query = new Query("ipl7");
         QueryResult result = tHash.search(query);
+        
         
         List<Status> status;
         
