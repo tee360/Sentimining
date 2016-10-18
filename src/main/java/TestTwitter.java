@@ -10,7 +10,7 @@ public class TestTwitter {
 
 	public static void main(String[] args)  {
 		String user;
-		user="realdonaldtrump";
+		user="quickenloans";
 		// TODO Auto-generated method stub
            ConfigurationBuilder cb = new ConfigurationBuilder();
            cb.setDebugEnabled(true)
@@ -23,6 +23,9 @@ public class TestTwitter {
            twitter4j.Twitter twitter = tf.getInstance();
            try{
            List<Status> status = twitter.getUserTimeline(user);
+         
+           
+           
           // System.out.println("test");
            for (Status st : status) {
         	   System.out.println(st.getText());

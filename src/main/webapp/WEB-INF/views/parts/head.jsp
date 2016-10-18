@@ -4,4 +4,6 @@
 	This code is included inside the <head> of every page
  --%>
 	<title>Reflect</title>
-	<link href="<c:url value="/resources/main.css"/>" rel="stylesheet"/>
+	<link href="<c:url value="/resources/Main.css"/>" rel="stylesheet"/>
+	<link href="<c:url value="/resources/bootstrap/css/bootstrap.css"/>" rel="stylesheet"/>
+	

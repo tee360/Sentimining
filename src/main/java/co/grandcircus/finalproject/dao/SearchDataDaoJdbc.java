@@ -26,8 +26,10 @@ public class SearchDataDaoJdbc implements SearchDataDao {
 
 	@Override
 	public String addTweets(String name, Double avg, String type) {
+
 		String sql = "INSERT INTO data_repo (search_name,score_average,type) VALUES (?, ?,?)";
 
+		//Double avg = null;
 		if (avg.isNaN()) {
 			avg = 0.0;
 		}
@@ -90,8 +92,8 @@ public class SearchDataDaoJdbc implements SearchDataDao {
 			if (result.next()) {
 				sentimentAnalyzer.setKeyword(result.getString("search_name"));
 				sentimentAnalyzer.setScoreValue(result.getDouble("score"));
-				System.out.println("Max score Keyword" + sentimentAnalyzer.getKeyword());
-				System.out.println("Max score" + sentimentAnalyzer.getScoreValue());
+			//	System.out.println("Max score Keyword" + sentimentAnalyzer.getKeyword());
+			//	System.out.println("Max score" + sentimentAnalyzer.getScoreValue());
 			}
 			result.close();
 			statement.close();
@@ -132,6 +134,5 @@ public class SearchDataDaoJdbc implements SearchDataDao {
 		}
 
 	}
-
 	
 }
