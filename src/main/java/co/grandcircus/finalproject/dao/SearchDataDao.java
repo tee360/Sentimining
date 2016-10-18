@@ -5,6 +5,7 @@ import java.util.ArrayList;
 
 import co.grandcircus.finalproject.model.SentimentAnalyzer;
 
+
 public interface SearchDataDao<Score> {
 
 	public String addTweets(String name, Double avg, String type);

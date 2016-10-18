@@ -16,6 +16,7 @@ import co.grandcircus.finalproject.model.Twitter;
 @Service
 public class SentimentAnalyzerService {
 
+
 	/*
 	 * This method is to get sentiment analysis for multiple tweets and return
 	 * average score and type
@@ -68,17 +69,22 @@ public class SentimentAnalyzerService {
 	}
 
 	public String getSummary2(int ratings) {
-		switch (ratings) {
-		case 1:
-			return "After analyzing the tweets, it was determined that this source has a highly unfavorable view among users.";
+		switch(ratings) {
+		case 1: 
+			return "After analyzing some of the more recent tweets, "
+					+ "it was determined that this source has a highly unfavorable view among users.";
 		case 2:
-			return "After analyzing the tweets, it was determined that this source has an unfavorable view among users.";
+			return "After analyzing some of the more recent tweets, "
+					+ "it was determined that this source has an unfavorable view among users.";
 		case 3:
-			return "After analyzing the tweets, it was determined that this source has a favorable view among users.";
+			return "After analyzing some of the more recent tweets, "
+					+ "it was determined that this source has a favorable view among users.";
 		case 4:
-			return "After analyzing the tweets, it was determined that this source has a highly favorable view among users.";
+			return "After analyzing some of the more recent tweets, "
+					+ "it was determined that this source has a highly favorable view among users.";
 		case 5:
-			return "After analyzing the tweets, it was determined that this source has an excellent view among users.";
+			return "After analyzing some of the more recent tweets, "
+					+ "it was determined that this source has an excellent view among users.";
 		default:
 			return null;
 		}
@@ -118,7 +124,7 @@ public class SentimentAnalyzerService {
 
 		SentimentAnalyzer stringAnalyzer = new SentimentAnalyzer();
 		stringAnalyzer.setType(jObject.get("type").toString());
-		stringAnalyzer.setScore((jObject.getDouble("score")));
+		stringAnalyzer.setScore((int)(jObject.getDouble("score")));
 		stringAnalyzer.setRatings(getRatings(jObject.getDouble("score")));
 
 		return stringAnalyzer;

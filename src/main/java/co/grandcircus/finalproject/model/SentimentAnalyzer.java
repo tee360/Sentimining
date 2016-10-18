@@ -43,8 +43,8 @@ public class SentimentAnalyzer {
 	public double getScore() {
 		return score;
 	}
-	public void setScore(double score) {
-		this.score = score;
+	public void setScore(double averageScore2) {
+		this.score = averageScore2;
 	}
 
 	public int getRatings() {
