@@ -24,8 +24,9 @@ public class SearchDataDaoJdbc implements SearchDataDao {
 	@Autowired
 	JdbcConnectionFactory connectionFactory;
 
-	
-	public String addTweets(String name, int score, String type) {
+	@Override
+	public String addTweets(String name, Double avg, String type) {
+
 		String sql = "INSERT INTO data_repo (search_name,score_average,type) VALUES (?, ?,?)";
 
 		Double avg = null;
@@ -36,7 +37,7 @@ public class SearchDataDaoJdbc implements SearchDataDao {
 				PreparedStatement statement = connection.prepareStatement(sql)) {
 
 			statement.setString(1, name);
-			statement.setDouble(2, score);
+			statement.setDouble(2, avg);
 			statement.setString(3, type);
 
 			int affectedRows = statement.executeUpdate();
@@ -91,8 +92,8 @@ public class SearchDataDaoJdbc implements SearchDataDao {
 			if (result.next()) {
 				sentimentAnalyzer.setKeyword(result.getString("search_name"));
 				sentimentAnalyzer.setScoreValue(result.getDouble("score"));
-				System.out.println("Max score Keyword" + sentimentAnalyzer.getKeyword());
-				System.out.println("Max score" + sentimentAnalyzer.getScoreValue());
+			//	System.out.println("Max score Keyword" + sentimentAnalyzer.getKeyword());
+			//	System.out.println("Max score" + sentimentAnalyzer.getScoreValue());
 			}
 			result.close();
 			statement.close();
@@ -133,13 +134,5 @@ public class SearchDataDaoJdbc implements SearchDataDao {
 		}
 
 	}
-
-
-	@Override
-	public String addTweets(String name, Double avg, String type) {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
 	
 }

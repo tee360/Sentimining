@@ -34,12 +34,20 @@ public class TwitterController {
 	 * and returns the model to twitter.jsp
 	 */
 	@RequestMapping("/Reflect/twitter")
-	public String home(Model model, @RequestParam("user") final String user) {
+	public String home(Model model, @RequestParam("user") final String user,
+			@RequestParam("searchType") final String searchType) {
 
-		List<Twitter> tweets = twitterservice.getCurrentTweets(user);
-		if (tweets != null && tweets.size() > 5) {
-			model.addAttribute("twitter", tweets.subList(0, 5));
+		List<Twitter> tweets = null;
+		
+		if ("timeLine".equals(searchType)) {
+			tweets = twitterservice.getCurrentTweets(user);
 		} else {
+			tweets = twitterservice.getCurrentHashTagTweets(user, searchType);
+		}
+		if (tweets != null){
+				//&& tweets.size() > 5) {
+	//	 model.addAttribute("twitter", tweets.subList(0, 10));
+	//	} else {
 			model.addAttribute("twitter", tweets);
 		}
 

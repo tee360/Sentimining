@@ -15,7 +15,7 @@
 	
 	<h1>Reflect</h1>
 	<P>The time on the server is ${serverTime}.</P>
- 	<img src="..." alt="..." class="img-circle">
+ 	
 	
 	<form action="<c:url value="/Reflect/twitter"/>">
 		<input type="text" name="user" /> <input type="submit"
