@@ -86,8 +86,8 @@ public class SearchDataDaoJdbc implements SearchDataDao {
 			if (result.next()) {
 				sentimentAnalyzer.setKeyword(result.getString("search_name"));
 				sentimentAnalyzer.setScoreValue(result.getDouble("score"));
-				System.out.println("Max score Keyword" + sentimentAnalyzer.getKeyword());
-				System.out.println("Max score" + sentimentAnalyzer.getScoreValue());
+			//	System.out.println("Max score Keyword" + sentimentAnalyzer.getKeyword());
+			//	System.out.println("Max score" + sentimentAnalyzer.getScoreValue());
 			}
 			result.close();
 			statement.close();
