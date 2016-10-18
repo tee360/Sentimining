@@ -42,10 +42,7 @@ public class TwitterService {
 			// getUserTimeline is responsible to return 20 tweets by default
 			//status = twitter.getUserTimeline(user, paging);
 
-//			for (Status st : status) {
-//				Twitter tw = new Twitter();
-//				tw.setText(st.getText());
-//				tw.setId(st.getId());
+	public List<Twitter> getCurrentTweets(String user) {
 
 		ConfigurationBuilder cb = getConfigBuilder();
 		List<Twitter> statusList = new ArrayList<Twitter>();
