@@ -3,7 +3,7 @@ package co.grandcircus.finalproject.model;
 import java.util.ArrayList;
 
 /**
- * Responsibility: Provide sentimentanalyzer data given by sentimentanalyzerservice
+ * Responsibility: Provide sentiment analyzer data given by sentiment analyzerservice
  */
 public class SentimentAnalyzer {
 
