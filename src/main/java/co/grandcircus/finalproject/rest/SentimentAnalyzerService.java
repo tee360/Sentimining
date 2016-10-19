@@ -5,6 +5,7 @@ import java.math.RoundingMode;
 import java.util.List;
 
 import org.json.JSONObject;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.mashape.unirest.http.HttpResponse;
@@ -22,6 +23,10 @@ public class SentimentAnalyzerService {
 	 * average score and type
 	 * 
 	 */
+	
+	//private Twitter tObj;
+	
+	
 	public SentimentAnalyzer getAnalysisOfSentiment(List<Twitter> tweets) {
 		SentimentAnalyzer stringAnalyzer = new SentimentAnalyzer();
 
@@ -29,12 +34,26 @@ public class SentimentAnalyzerService {
 		double score = 0;
 		// validate the number of to have at least one
 		if (numberOfTweets > 0) {
+			
+			double maxScore = -1.0;
+			String maxTweetText = null;
 
 			for (Twitter tweet : tweets) {
 				JSONObject jsonObject = getAnalysisOfSentimentJSONObject(tweet.getText());
 				score += jsonObject.getDouble("score");
+				
+				if(score > maxScore) {
+					maxScore = score;
+					maxTweetText = tweet.getText();
+				}
+				
+				
+				
 			}
-
+			
+			stringAnalyzer.setMaxScore(maxScore);
+			stringAnalyzer.setMaxTweetText(maxTweetText);
+			
 			double averageScore = score / numberOfTweets;
 			if (averageScore < 0) {
 				stringAnalyzer.setType("negative");
@@ -55,9 +74,15 @@ public class SentimentAnalyzerService {
 			avgScore*=100;
 			stringAnalyzer.setScore(avgScore);
 
+			// Sets the summary that appears
 			stringAnalyzer.setSummary(getSummary2(stringAnalyzer.getRatings()));
 		}
 		return stringAnalyzer;
+	}
+
+	private SentimentAnalyzer setTweetScore(double maxScore) {
+		// TODO Auto-generated method stub
+		return null;
 	}
 
 	public int getRatings(double averageScore) {

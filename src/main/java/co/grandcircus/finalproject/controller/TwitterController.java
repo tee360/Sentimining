@@ -47,8 +47,9 @@ public class TwitterController {
 			tweets = twitterservice.getCurrentHashTagTweets(user, searchType);
 		}
 		
-		if (tweets != null && tweets.size() > 5) {
-			model.addAttribute("twitter", tweets.subList(0, 5));
+			
+			if (tweets != null && tweets.size() > 5) {
+				model.addAttribute("twitter", tweets.subList(0, 5));	
 		} else {
 			model.addAttribute("twitter", tweets);
 		}
@@ -66,8 +67,10 @@ public class TwitterController {
 	model.addAttribute("averageScore", bd);
 
 	model.addAttribute("SentimentAnalyzer",analyzer);
+	//model.addAttribute("maxTweetText", analyzer.getMaxTweetText());
 
-	model.addAttribute("searchKeyword",user);model.addAttribute("maxScore",jdbc.getMaxScore());
+	model.addAttribute("searchKeyword",user);
+	model.addAttribute("maxScore",jdbc.getMaxScore());
 
 	model.addAttribute("minScore",jdbc.getMinScore());
 

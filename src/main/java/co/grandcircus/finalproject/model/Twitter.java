@@ -6,9 +6,18 @@ package co.grandcircus.finalproject.model;
 public class Twitter {
 	private String user;
 	private long id;
-	private String text;
+	private String text;	// Holds the actual tweet
 	private long hashtag;
 	private String screenName;
+	private double tweetScore;
+
+	public double getTweetScore() {
+		return tweetScore;
+	}
+
+	public void setTweetScore(double tweetScore) {
+		this.tweetScore = tweetScore;
+	}
 
 	public long getId() {
 		return id;
