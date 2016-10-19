@@ -66,8 +66,10 @@ public class TwitterController {
 	model.addAttribute("averageScore", bd);
 
 	model.addAttribute("SentimentAnalyzer",analyzer);
+	//model.addAttribute("maxTweetText", analyzer.getMaxTweetText());
 
-	model.addAttribute("searchKeyword",user);model.addAttribute("maxScore",jdbc.getMaxScore());
+	model.addAttribute("searchKeyword",user);
+	model.addAttribute("maxScore",jdbc.getMaxScore());
 
 	model.addAttribute("minScore",jdbc.getMinScore());
 
