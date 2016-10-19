@@ -1,5 +1,7 @@
 package co.grandcircus.finalproject.rest;
 
+import java.math.BigDecimal;
+import java.math.RoundingMode;
 import java.util.List;
 
 import org.json.JSONObject;
@@ -15,8 +17,6 @@ import co.grandcircus.finalproject.model.Twitter;
 
 @Service
 public class SentimentAnalyzerService {
-
-
 	/*
 	 * This method is to get sentiment analysis for multiple tweets and return
 	 * average score and type
@@ -45,8 +45,15 @@ public class SentimentAnalyzerService {
 			}
 
 			stringAnalyzer.setRatings(getRatings(averageScore));
-
-			stringAnalyzer.setScore(averageScore);
+			
+			/*
+			 * Scales score so that it's rounded to 2 decimal places
+			 */
+			BigDecimal bd = new BigDecimal(averageScore);
+			bd = bd.setScale(2, RoundingMode.HALF_UP);
+			double avgScore = bd.doubleValue();
+			avgScore*=100;
+			stringAnalyzer.setScore(avgScore);
 
 			stringAnalyzer.setSummary(getSummary2(stringAnalyzer.getRatings()));
 		}

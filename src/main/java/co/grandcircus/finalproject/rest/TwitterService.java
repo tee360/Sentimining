@@ -36,9 +36,7 @@ public class TwitterService {
 				.setOAuthAccessTokenSecret("urK9LBU9imWuWvP9honql4E9e4rp14Rzec5FdAHQAdsQi");
 		return cb;
 
-		}
-	
-		
+		}		
 			// getUserTimeline is responsible to return 20 tweets by default
 			//status = twitter.getUserTimeline(user, paging);
 
@@ -56,13 +54,17 @@ public class TwitterService {
 		try {
 			List<Status> status;
 			int number_of_pages = 1;
-			int count_per_page = 10;
+			int count_per_page = 5;
 			Paging paging = new Paging(1, count_per_page);
 			for (int i = 1; i <= number_of_pages; i++) {
 				
-				// getUserTimeline is responsible to return 20 tweets by default
-				status = twitter.getUserTimeline(user, paging);
-				status = twitter.getMentionsTimeline();
+				if(user.startsWith("@")) {
+					status = twitter.getMentionsTimeline();
+				}
+				else {
+					// getUserTimeline is responsible to return 20 tweets by default
+					status = twitter.getUserTimeline(user, paging);
+				}				
 
 				for (Status st : status) {
 					Twitter tw = new Twitter();
@@ -92,7 +94,7 @@ public class TwitterService {
 		try {
 			Query query = new Query(searchType + user);
 			query.setResultType(Query.RECENT);
-			query.count(60);
+			query.count(20);
 			QueryResult result;
 			do {
 				result = twitter.search(query);

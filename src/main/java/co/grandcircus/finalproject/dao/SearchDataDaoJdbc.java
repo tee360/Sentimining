@@ -25,14 +25,14 @@ public class SearchDataDaoJdbc implements SearchDataDao {
 	JdbcConnectionFactory connectionFactory;
 
 	@Override
-	public String addTweets(String name, Double avg, String type) {
+	public String addTweets(String name, double avg, String type) {
 
 		String sql = "INSERT INTO data_repo (search_name,score_average,type) VALUES (?, ?,?)";
 
 		//Double avg = null;
-		if (avg.isNaN()) {
-			avg = 0.0;
-		}
+//		if (avg.isNaN()) {
+//			avg = 0.0;
+//		}
 		try (Connection connection = connectionFactory.getConnection();
 				PreparedStatement statement = connection.prepareStatement(sql)) {
 
@@ -55,15 +55,15 @@ public class SearchDataDaoJdbc implements SearchDataDao {
 	
 	
 	@Override
-	public Double retrieveRunningAvg(String keyword) {
-		String sql = "SELECT AVG (score_average) AS avg FROM data_repo  where search_name ='" + keyword + "'";
+	public double retrieveRunningAvg() {
+		String sql = "SELECT AVG (score_average) AS avg FROM data_repo;";
 
 		try {
 			Connection connection = connectionFactory.getConnection();
 			PreparedStatement statement = connection.prepareStatement(sql);
 			ResultSet result = statement.executeQuery(sql);
 
-			Double avgData = 0.0;
+			double avgData = 0;
 			while (result.next()) {
 				avgData = result.getDouble("avg");
 

@@ -20,7 +20,7 @@
 		<input type="text" name="user" />
 		<select name ="searchType">
 			  <option value="#">#-HashTag</option>
-			  <option value="@">@-Tag</option>
+			  <option value="@">@-Mentions</option>
 			  <option value="timeLine">timeLine</option>
 		</select>
 		 <input type="submit" class="buttonSearch" />
