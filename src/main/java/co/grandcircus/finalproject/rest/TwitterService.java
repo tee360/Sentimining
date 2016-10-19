@@ -76,6 +76,7 @@ public class TwitterService {
 			}
 		} catch (Exception e) {
 			e.printStackTrace();
+		
 		}
 		return statusList;
 	}

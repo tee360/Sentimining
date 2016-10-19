@@ -47,8 +47,9 @@ public class TwitterController {
 			tweets = twitterservice.getCurrentHashTagTweets(user, searchType);
 		}
 		
-		if (tweets != null && tweets.size() > 5) {
-			model.addAttribute("twitter", tweets.subList(0, 5));
+			
+			if (tweets != null && tweets.size() > 5) {
+				model.addAttribute("twitter", tweets.subList(0, 5));	
 		} else {
 			model.addAttribute("twitter", tweets);
 		}
