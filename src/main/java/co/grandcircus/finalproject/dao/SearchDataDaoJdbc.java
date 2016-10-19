@@ -39,7 +39,7 @@ public class SearchDataDaoJdbc implements SearchDataDao {
 			statement.setString(1, name);
 			statement.setDouble(2, avg);
 			statement.setString(3, type);
-
+			//Executing the query
 			int affectedRows = statement.executeUpdate();
 			if (affectedRows == 0) {
 				throw new SQLException("Creating users failed, no rows affected.");

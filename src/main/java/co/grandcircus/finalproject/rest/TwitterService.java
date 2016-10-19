@@ -54,7 +54,7 @@ public class TwitterService {
 		try {
 			List<Status> status;
 			int number_of_pages = 1;
-			int count_per_page = 5;
+			int count_per_page = 10;
 			Paging paging = new Paging(1, count_per_page);
 			for (int i = 1; i <= number_of_pages; i++) {
 				
@@ -76,6 +76,7 @@ public class TwitterService {
 			}
 		} catch (Exception e) {
 			e.printStackTrace();
+		
 		}
 		return statusList;
 	}
@@ -103,7 +104,7 @@ public class TwitterService {
 				for (Status tweet : tweets) {
 					Twitter twitterObj = new Twitter();
 					twitterObj.setText(tweet.getText());
-					twitterObj.setScreenName(tweet.getUser().getScreenName());
+				//	twitterObj.setScreenName(tweet.getUser().getScreenName());
 					statusList.add(twitterObj);
 				}
 			} while ((query = result.nextQuery()) != null);
