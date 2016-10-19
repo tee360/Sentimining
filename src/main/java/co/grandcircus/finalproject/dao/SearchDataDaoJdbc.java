@@ -29,17 +29,21 @@ public class SearchDataDaoJdbc implements SearchDataDao {
 
 		String sql = "INSERT INTO data_repo (search_name,score_average,type) VALUES (?, ?,?)";
 
-		Double avg = null;
+	// avg = null;
 		if (avg.isNaN()) {
 			avg = 0.0;
 		}
-		try (Connection connection = connectionFactory.getConnection();
-				PreparedStatement statement = connection.prepareStatement(sql)) {
+		
+		try {
+			//getting the JdbcConnection using the JdbcConnectionFactory
+			Connection connection = connectionFactory.getConnection();
+			//Creating the Statement using the SQL query
+			PreparedStatement statement = connection.prepareStatement(sql);
 
 			statement.setString(1, name);
 			statement.setDouble(2, avg);
 			statement.setString(3, type);
-
+			//Executing the query
 			int affectedRows = statement.executeUpdate();
 			if (affectedRows == 0) {
 				throw new SQLException("Creating users failed, no rows affected.");

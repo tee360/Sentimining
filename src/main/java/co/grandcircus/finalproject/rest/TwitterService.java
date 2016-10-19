@@ -60,7 +60,7 @@ public class TwitterService {
 			for (int i = 1; i <= number_of_pages; i++) {
 				// getUserTimeline is responsible to return 20 tweets by default
 				status = twitter.getUserTimeline(user, paging);
-				status = twitter.getMentionsTimeline();
+			//	status = twitter.getMentionsTimeline();
 
 				for (Status st : status) {
 					Twitter tw = new Twitter();
@@ -73,6 +73,7 @@ public class TwitterService {
 
 		} catch (Exception e) {
 			e.printStackTrace();
+		
 		}
 
 		return statusList;
@@ -93,7 +94,7 @@ public class TwitterService {
 		try {
 			Query query = new Query(searchType + user);
 			query.setResultType(Query.RECENT);
-			query.count(60);
+			query.count(10);
 			QueryResult result;
 			do {
 				result = twitter.search(query);

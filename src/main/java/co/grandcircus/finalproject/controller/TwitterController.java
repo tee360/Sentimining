@@ -44,10 +44,11 @@ public class TwitterController {
 		} else {
 			tweets = twitterservice.getCurrentHashTagTweets(user, searchType);
 		}
-		if (tweets != null){
-				//&& tweets.size() > 5) {
-	//	 model.addAttribute("twitter", tweets.subList(0, 10));
-	//	} else {
+		
+			
+			if (tweets != null && tweets.size() > 5) {
+				model.addAttribute("twitter", tweets.subList(0, 5));	
+		} else {
 			model.addAttribute("twitter", tweets);
 		}
 
