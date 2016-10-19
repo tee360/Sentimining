@@ -13,6 +13,7 @@ import twitter4j.Status;
 import twitter4j.TwitterFactory;
 import twitter4j.conf.ConfigurationBuilder;
 
+
 /* author Reflect
  *  Twitter Service is responsible for providing the tweets related to the search
  *  It returns the json object with text and id
@@ -35,32 +36,35 @@ public class TwitterService {
 				.setOAuthAccessTokenSecret("urK9LBU9imWuWvP9honql4E9e4rp14Rzec5FdAHQAdsQi");
 		return cb;
 
-	}
+		}		
+			// getUserTimeline is responsible to return 20 tweets by default
+			//status = twitter.getUserTimeline(user, paging);
 
-	/*
-	 * configuration builder is used to construct twitter4J lib,this has
-	 * sensible builder configurationbuilder() and build() which would create a
-	 * usable configuration
-	 * 
-	 */
 	public List<Twitter> getCurrentTweets(String user) {
 
 		ConfigurationBuilder cb = getConfigBuilder();
 		List<Twitter> statusList = new ArrayList<Twitter>();
+		
 		//Create TwitterFactory using the ConfigurationBuilder
 		TwitterFactory tf = new TwitterFactory(cb.build());
+		
 		//getInstance method  gives the twitter object
 		twitter4j.Twitter twitter = tf.getInstance();
 
 		try {
 			List<Status> status;
 			int number_of_pages = 1;
-			int count_per_page = 10;
+			int count_per_page = 5;
 			Paging paging = new Paging(1, count_per_page);
 			for (int i = 1; i <= number_of_pages; i++) {
-				// getUserTimeline is responsible to return 20 tweets by default
-				status = twitter.getUserTimeline(user, paging);
-			//	status = twitter.getMentionsTimeline();
+				
+				if(user.startsWith("@")) {
+					status = twitter.getMentionsTimeline();
+				}
+				else {
+					// getUserTimeline is responsible to return 20 tweets by default
+					status = twitter.getUserTimeline(user, paging);
+				}				
 
 				for (Status st : status) {
 					Twitter tw = new Twitter();
@@ -70,15 +74,12 @@ public class TwitterService {
 				}
 				paging.setPage(i + 1);
 			}
-
 		} catch (Exception e) {
 			e.printStackTrace();
 		
 		}
-
 		return statusList;
 	}
-
 	/*
      * 
 	 * This method is to search for the string with # or @
@@ -94,7 +95,7 @@ public class TwitterService {
 		try {
 			Query query = new Query(searchType + user);
 			query.setResultType(Query.RECENT);
-			query.count(10);
+			query.count(20);
 			QueryResult result;
 			do {
 				result = twitter.search(query);

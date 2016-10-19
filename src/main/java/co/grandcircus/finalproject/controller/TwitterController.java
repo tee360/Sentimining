@@ -1,5 +1,7 @@
 package co.grandcircus.finalproject.controller;
 
+import java.math.BigDecimal;
+import java.math.RoundingMode;
 import java.util.List;
 
 import org.slf4j.Logger;
@@ -38,7 +40,7 @@ public class TwitterController {
 			@RequestParam("searchType") final String searchType) {
 
 		List<Twitter> tweets = null;
-		
+
 		if ("timeLine".equals(searchType)) {
 			tweets = twitterservice.getCurrentTweets(user);
 		} else {
@@ -52,22 +54,27 @@ public class TwitterController {
 			model.addAttribute("twitter", tweets);
 		}
 
-		SentimentAnalyzer analyzer = sentimentAnalyzer.getAnalysisOfSentiment(tweets);
+	SentimentAnalyzer analyzer = sentimentAnalyzer.getAnalysisOfSentiment(tweets);
 
+	jdbc.addTweets(user,analyzer.getScore(),analyzer.getType());
 
-		jdbc.addTweets(user, analyzer.getScore(), analyzer.getType());
-		model.addAttribute("averageScore", jdbc.retrieveRunningAvg(user));
+//	Double dObj = new Double(null);
+//	dObj = jdbc.retrieveRunningAvg();
+	double avg = jdbc.retrieveRunningAvg();
+	BigDecimal bd = new BigDecimal(avg);
+	bd = bd.setScale(2, RoundingMode.HALF_UP);
+//	System.out.println("AVG SCORE OVER HERE!!!"+bd);
+	model.addAttribute("averageScore", bd);
 
-		model.addAttribute("SentimentAnalyzer", analyzer);
+	model.addAttribute("SentimentAnalyzer",analyzer);
 
-		model.addAttribute("searchKeyword", user);
-		model.addAttribute("maxScore", jdbc.getMaxScore());
+	model.addAttribute("searchKeyword",user);model.addAttribute("maxScore",jdbc.getMaxScore());
 
-		model.addAttribute("minScore", jdbc.getMinScore());
+	model.addAttribute("minScore",jdbc.getMinScore());
 
-		logger.info("/twitter -> twitter.jsp");
+	logger.info("/twitter -> twitter.jsp");
 
-		return "twitter";
-	}
+	return"twitter";
+}
 
 }

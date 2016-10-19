@@ -18,11 +18,9 @@ public class SentimentAnalyzer {
 	/**
 	 * Ratings based on analysis.
 	 */
-	private int ratings;
-	
+	private int ratings;	
 	private String summary;
-	private Double averageScore;
-	
+	private Double averageScore;	
 	private Double scoreValue;
 	private String keyword;
 	

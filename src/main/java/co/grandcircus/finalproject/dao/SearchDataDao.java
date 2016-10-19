@@ -8,9 +8,9 @@ import co.grandcircus.finalproject.model.SentimentAnalyzer;
 
 public interface SearchDataDao<Score> {
 
-	public String addTweets(String name, Double avg, String type);
+	public String addTweets(String name, double avg, String type);
 	
-	public Double retrieveRunningAvg(String keyword);
+	public double retrieveRunningAvg();
 	
 	public SentimentAnalyzer getMaxScore() throws SQLException;
 
