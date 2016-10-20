@@ -1,4 +1,4 @@
-package co.grandcircus.finalproject.model;
+~!1	1	package co.grandcircus.finalproject.model;
 
 import java.util.ArrayList;
 
@@ -21,27 +21,13 @@ public class SentimentAnalyzer {
 	private int ratings;	
 	private String summary;
 	private Double averageScore;	
-	private double scoreValue;
+	private Double scoreValue;
 	private String keyword;
 	private double maxScore;
-	private String maxTweetText;
-	private double minScore;
-	private String minTweetText;
+	private String maxTweetText;	
 	
 	
-    public double getMinScore() {
-		return minScore;
-	}
-	public void setMinScore(double minScore) {
-		this.minScore = minScore;
-	}
-	public String getMinTweetText() {
-		return minTweetText;
-	}
-	public void setMinTweetText(String minTweetText) {
-		this.minTweetText = minTweetText;
-	}
-	public String getMaxTweetText() {
+    public String getMaxTweetText() {
 		return maxTweetText;
 	}
 	public void setMaxTweetText(String maxTweetText) {
@@ -86,10 +72,10 @@ public class SentimentAnalyzer {
 	public void setAverageScore(Double averageScore) {
 		this.averageScore = averageScore;
 	}
-	public double getScoreValue() {
+	public Double getScoreValue() {
 		return scoreValue;
 	}
-	public void setScoreValue(double scoreValue) {
+	public void setScoreValue(Double scoreValue) {
 		this.scoreValue = scoreValue;
 	}
 	public String getKeyword() {
