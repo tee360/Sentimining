@@ -1,7 +1,9 @@
-<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
-<%@ page session="false" %>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+<%@ page session="false"%>
 <%--
-	This code is included inside the <head> of every page
+	On this page the user can choose to view movies or categories.
+	
+	Model: none
  --%>
 	<title>Reflect</title>
 	

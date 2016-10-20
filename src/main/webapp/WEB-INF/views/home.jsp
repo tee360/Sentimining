@@ -103,5 +103,8 @@
 </div>
 </body>
 
+</style>
+</div>
+<div>
 
-</html>
+</div>
