@@ -95,7 +95,7 @@ public class TwitterService {
 		try {
 			Query query = new Query(searchType + user);
 			query.setResultType(Query.RECENT);
-			query.count(20);
+			query.count(10);
 			QueryResult result;
 			do {
 				result = twitter.search(query);

@@ -24,6 +24,10 @@
 
 <link href="css/bootstrap.min.css" rel="stylesheet">
 <link href="css/style.css" rel="stylesheet">
+<style type="text/css"> 
+	body{background-image: "resources/images/BackgroundImage2.jpg"	
+	}
+</style>
 </head>
 <body>
 	<div class="container-fluid">
@@ -74,7 +78,7 @@
 											<center>
 												Your Best Recent Tweet Score: &nbsp;
 												<fmt:formatNumber type="number" maxFractionDigits="2"
-													value="${ SentimentAnalyzer.maxScore}" />
+													value="${ SentimentAnalyzer.maxScore *100}" />
 												<textarea name="tweet" rows="4" cols="50"><c:out
 														value="${ SentimentAnalyzer.maxTweetText}" /></textarea>
 										</div>
@@ -82,7 +86,7 @@
 											<center>
 												Your Worst Recent Tweet Score: &nbsp;
 												<fmt:formatNumber type="number" maxFractionDigits="2"
-													value="${ SentimentAnalyzer.minScore}" />
+													value="${ SentimentAnalyzer.minScore *100}" />
 												<textarea name="tweet" rows="4" cols="50"><c:out
 														value="${ SentimentAnalyzer.minTweetText}" /></textarea>
 											</center>
