@@ -97,17 +97,15 @@ public class TwitterService {
 			query.setResultType(Query.RECENT);
 			query.count(10);
 			QueryResult result;
-			do {
-				result = twitter.search(query);
-				List<Status> tweets = result.getTweets();
+			result = twitter.search(query);
+			List<Status> tweets = result.getTweets();
 
-				for (Status tweet : tweets) {
-					Twitter twitterObj = new Twitter();
-					twitterObj.setText(tweet.getText());
-				//	twitterObj.setScreenName(tweet.getUser().getScreenName());
-					statusList.add(twitterObj);
-				}
-			} while ((query = result.nextQuery()) != null);
+			for (Status tweet : tweets) {
+				Twitter twitterObj = new Twitter();
+				twitterObj.setText(tweet.getText());
+			//	twitterObj.setScreenName(tweet.getUser().getScreenName());
+				statusList.add(twitterObj);
+			}
 
 		} catch (Exception e) {
 			e.printStackTrace();

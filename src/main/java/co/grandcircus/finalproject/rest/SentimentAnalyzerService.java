@@ -137,7 +137,7 @@ public class SentimentAnalyzerService {
 		HttpResponse<JsonNode> jsonResponse = null;
 		try {
 			jsonResponse = Unirest.post("https://twinword-sentiment-analysis.p.mashape.com/analyze/")
-					.header("X-Mashape-Key", "vqKLeNUFrDmshfUd60DopAwITbrJp19qzOyjsnAURqfBjeFQ9w")
+					.header("X-Mashape-Key", "54k15gqO06mshqMSp5fKtKmBWL5op1XIXMujsnfi4tWVNldYrP")
 					.header("Content-Type", "application/x-www-form-urlencoded").header("Accept", "application/json")
 					.field("text", tweet).asJson();
 
