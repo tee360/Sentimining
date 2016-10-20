@@ -37,6 +37,8 @@ public class SentimentAnalyzerService {
 			
 			double maxScore = -1.0;
 			String maxTweetText = null;
+			double minScore = 1;
+			String minTweetText = null;
 
 			for (Twitter tweet : tweets) {
 				JSONObject jsonObject = getAnalysisOfSentimentJSONObject(tweet.getText());
@@ -47,12 +49,17 @@ public class SentimentAnalyzerService {
 					maxTweetText = tweet.getText();
 				}
 				
-				
+				if(score < minScore) {
+					minScore = score;
+					minTweetText = tweet.getText();
+				}
 				
 			}
 			
 			stringAnalyzer.setMaxScore(maxScore);
 			stringAnalyzer.setMaxTweetText(maxTweetText);
+			stringAnalyzer.setMinScore(minScore);
+			stringAnalyzer.setMinTweetText(minTweetText);
 			
 			double averageScore = score / numberOfTweets;
 			if (averageScore < 0) {

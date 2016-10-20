@@ -66,12 +66,12 @@
 <div id="sidebar">
 	
 				<P>
-					 A Sentiment Analyzer We Identify, Analyze and Reflect
+					 With Reflect We Identify, Analyze and Reflect
 					(Report) the Positive or Negative Sentiment on any Personal or
 					Business Target Entities within any Social media, Webpage and
 					Document.<br> What is a Sentiment :<br>It is the attitude, opinion or
 					feeling toward something, such as a person, organization, product
-					or location Reflect.<br></P>
+					or location.<br></P>
 			
 			
 	</div>

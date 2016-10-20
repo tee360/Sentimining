@@ -58,18 +58,16 @@ public class TwitterController {
 
 	jdbc.addTweets(user,analyzer.getScore(),analyzer.getType());
 
-//	Double dObj = new Double(null);
-//	dObj = jdbc.retrieveRunningAvg();
 	double avg = jdbc.retrieveRunningAvg();
 	BigDecimal bd = new BigDecimal(avg);
 	bd = bd.setScale(2, RoundingMode.HALF_UP);
-//	System.out.println("AVG SCORE OVER HERE!!!"+bd);
 	model.addAttribute("averageScore", bd);
 
 	model.addAttribute("SentimentAnalyzer",analyzer);
-	//model.addAttribute("maxTweetText", analyzer.getMaxTweetText());
-
+	
 	model.addAttribute("searchKeyword",user);
+	
+	
 	model.addAttribute("maxScore",jdbc.getMaxScore());
 
 	model.addAttribute("minScore",jdbc.getMinScore());

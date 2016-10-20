@@ -16,8 +16,5 @@ public interface SearchDataDao<Score> {
 
 	public SentimentAnalyzer getMinScore() throws SQLException;
 	
-	
-	
-	
 
 }
