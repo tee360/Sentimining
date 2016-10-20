@@ -1,6 +1,8 @@
 package co.grandcircus.finalproject.dao;
 
 
+import java.math.BigDecimal;
+import java.math.RoundingMode;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -91,9 +93,11 @@ public class SearchDataDaoJdbc implements SearchDataDao {
 
 			if (result.next()) {
 				sentimentAnalyzer.setKeyword(result.getString("search_name"));
-				sentimentAnalyzer.setScoreValue(result.getDouble("score"));
-			//	System.out.println("Max score Keyword" + sentimentAnalyzer.getKeyword());
-			//	System.out.println("Max score" + sentimentAnalyzer.getScoreValue());
+				
+				double maxScore = result.getDouble("score");
+				BigDecimal bd = new BigDecimal(maxScore);
+				bd = bd.setScale(2, RoundingMode.HALF_UP);
+				sentimentAnalyzer.setScoreValue(bd.doubleValue());
 			}
 			result.close();
 			statement.close();
@@ -123,9 +127,12 @@ public class SearchDataDaoJdbc implements SearchDataDao {
 
 			if (result.next()) {
 				sentimentanalyzer.setKeyword(result.getString("search_name"));
-				sentimentanalyzer.setScoreValue(result.getDouble("score"));
-				System.out.println("MIN score Keyword" + sentimentanalyzer.getKeyword());
-				System.out.println("MIN score" + sentimentanalyzer.getScoreValue());
+				
+				double minScore = result.getDouble("score");
+				BigDecimal bd = new BigDecimal(minScore);
+				bd = bd.setScale(2, RoundingMode.HALF_UP);
+				System.out.println("HELLO!!! CHECK VALUE!!!" +bd.doubleValue());
+				sentimentanalyzer.setScoreValue(bd.doubleValue());				
 			}
 
 			return sentimentanalyzer;

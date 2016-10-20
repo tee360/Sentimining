@@ -21,13 +21,27 @@ public class SentimentAnalyzer {
 	private int ratings;	
 	private String summary;
 	private Double averageScore;	
-	private Double scoreValue;
+	private double scoreValue;
 	private String keyword;
 	private double maxScore;
-	private String maxTweetText;	
+	private String maxTweetText;
+	private double minScore;
+	private String minTweetText;
 	
 	
-    public String getMaxTweetText() {
+    public double getMinScore() {
+		return minScore;
+	}
+	public void setMinScore(double minScore) {
+		this.minScore = minScore;
+	}
+	public String getMinTweetText() {
+		return minTweetText;
+	}
+	public void setMinTweetText(String minTweetText) {
+		this.minTweetText = minTweetText;
+	}
+	public String getMaxTweetText() {
 		return maxTweetText;
 	}
 	public void setMaxTweetText(String maxTweetText) {
@@ -72,10 +86,10 @@ public class SentimentAnalyzer {
 	public void setAverageScore(Double averageScore) {
 		this.averageScore = averageScore;
 	}
-	public Double getScoreValue() {
+	public double getScoreValue() {
 		return scoreValue;
 	}
-	public void setScoreValue(Double scoreValue) {
+	public void setScoreValue(double scoreValue) {
 		this.scoreValue = scoreValue;
 	}
 	public String getKeyword() {
